@@ -4,6 +4,10 @@ theme = 'parsa'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+
 [languages]
   [languages.en]
     languageName = 'English'
