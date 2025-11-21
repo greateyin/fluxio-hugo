@@ -1,3 +1,11 @@
-{{ if .Src }}
-<img src="{{ .Src | absURL }}" alt="{{ .Alt }}" class="{{ .Class }}">
+{{/* Fallback to default image if Src is empty */}}
+{{ $src := .Src }}
+{{ if not $src }}
+  {{ with site.Params.default_image }}
+    {{ $src = . }}
+  {{ end }}
+{{ end }}
+{{ if $src }}
+<img src="{{ $src | absURL }}" alt="{{ .Alt }}" class="{{ .Class }}"
+  onerror="this.onerror=null;this.src='{{ site.Params.default_image | absURL }}';">
 {{ end }}

@@ -29,6 +29,7 @@ defaultContentLanguageInSubdir = true
   description = "Fluxio - Modern Tech News"
   author = "Fluxio Team"
   layout = "2"
+  default_image = "images/placeholder.svg"
   # Custom CSS for Glassmorphism
   custom_css = ["css/custom.css"]
   

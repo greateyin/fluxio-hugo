@@ -21,9 +21,11 @@
         {{ with index $recommended 0 }}
         <!-- First recommended as large card -->
         <a href="{{ .Permalink }}" class="recommended-featured-card d-block mb-3 text-decoration-none">
-            {{ if .Params.image }}
+            {{ $img := or .Params.image site.Params.default_image }}
+            {{ if $img }}
             <div class="recommended-featured-thumb">
-                <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
+                <img src="{{ $img | absURL }}" alt="{{ .Title }}"
+                    onerror="this.onerror=null;this.src='{{ site.Params.default_image | absURL }}';">
             </div>
             {{ end }}
             <div class="recommended-featured-body">
@@ -47,9 +49,11 @@
                 </h6>
                 <span class="text-muted small" style="font-size: 0.75rem;">{{ $p.PublishDate.Format "4h ago" }}</span>
             </div>
-            {{ if $p.Params.image }}
-            <img src="{{ $p.Params.image | absURL }}" alt="{{ $p.Title }}"
-                style="width: 70px; height: 70px; object-fit: cover;">
+            {{ $thumb := or $p.Params.image site.Params.default_image }}
+            {{ if $thumb }}
+            <img src="{{ $thumb | absURL }}" alt="{{ $p.Title }}"
+                style="width: 70px; height: 70px; object-fit: cover;"
+                onerror="this.onerror=null;this.src='{{ site.Params.default_image | absURL }}';">
             {{ end }}
         </div>
         {{ end }}
