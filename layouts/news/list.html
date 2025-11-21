@@ -17,87 +17,32 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mt-5">
-        {{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+        {{ $pages := .Pages.ByDate.Reverse }}
 
-        <div class="row">
-          {{ range $i, $p := $paginator.Pages }}
-          <div class="col-12 mb-100">
-            <article data-file="{{ .Permalink }}" data-target="article"
-              class="article-full-width {{ if not (modBool $i 2) }} article-right {{ end }}">
-              <div class="post-image">
+        <div id="news-list" class="news-list" data-page-size="5">
+          {{ range $i, $p := $pages }}
+          <div class="news-list-item">
+            <article data-file="{{ .Permalink }}" data-target="article" class="news-list-article">
+              <div class="news-list-media">
                 {{ partial "image.html" (dict "Src" .Params.Image "Alt" "post-thumb" "Class" "img-fluid" ) }}
               </div>
-              <div class="post-content">
-                <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-                  <li class="list-inline-item"><i class="ti-calendar mr-2"></i>{{ .PublishDate.Format "Jan 02, 2006" }}
-                  </li>
-                  <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta"></span> read</li>
-                </ul>
-                <h4 class="mb-4"><a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a></h4>
-                <p class="mb-0 post-summary">{{ .Summary }}</p>
-                <a class="btn btn-transparent mb-4" href="{{ .Permalink }}">Continue...</a>
+              <div class="news-list-body">
+                <div class="news-list-meta">
+                  <span class="news-list-category">
+                    {{ with index .Params.categories 0 }}{{ . }}{{ end }}
+                  </span>
+                  <span class="news-list-dot">•</span>
+                  <span class="news-list-date">{{ .PublishDate.Format "Jan 02, 2006" }}</span>
+                </div>
+                <h3 class="news-list-title">
+                  <a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a>
+                </h3>
+                <p class="news-list-excerpt">{{ .Summary }}</p>
+                <a class="btn btn-transparent news-list-readmore" href="{{ .Permalink }}">Continue...</a>
               </div>
             </article>
           </div>
           {{ end }}
-        </div>
-
-        <!-- pagination (copied from theme list.html) -->
-        <div class="row">
-          <div class="col-12">
-            {{ $paginator := .Paginator }}
-            {{ $adjacent_links := 2 }}
-            {{ $max_links := (add (mul $adjacent_links 2) 1) }}
-            {{ $lower_limit := (add $adjacent_links 1) }}
-            {{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
-            {{ if gt $paginator.TotalPages 1 }}
-            <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center align-items-center">
-                {{ if $paginator.HasPrev }}
-                <li class="page-item">
-                  <a href="{{ $paginator.Prev.URL }}" class="page-link">
-                    &laquo; Previous
-                  </a>
-                </li>
-                {{ end }}
-                {{ range $paginator.Pagers }}
-                {{ $.Scratch.Set "page_number_flag" false }}
-                {{ if gt $paginator.TotalPages $max_links }}
-                {{ if le $paginator.PageNumber $lower_limit }}
-                {{ if le .PageNumber $max_links }}
-                {{ $.Scratch.Set "page_number_flag" true }}
-                {{ end }}
-                {{ else if ge $paginator.PageNumber $upper_limit }}
-                {{ if gt .PageNumber (sub $paginator.TotalPages $max_links) }}
-                {{ $.Scratch.Set "page_number_flag" true }}
-                {{ end }}
-                {{ else }}
-                {{ if and (ge .PageNumber (sub $paginator.PageNumber $adjacent_links)) (le .PageNumber (add $paginator.PageNumber $adjacent_links)) }}
-                {{ $.Scratch.Set "page_number_flag" true }}
-                {{ end }}
-                {{ end }}
-                {{ else }}
-                {{ $.Scratch.Set "page_number_flag" true }}
-                {{ end }}
-                {{ if eq ($.Scratch.Get "page_number_flag") true }}
-                <li class="page-item{{ if eq . $paginator }} page-item active {{ end }}">
-                  <a href="{{ .URL }}" class="page-link">
-                    {{ .PageNumber }}
-                  </a>
-                </li>
-                {{ end }}
-                {{ end }}
-                {{ if $paginator.HasNext }}
-                <li class="page-item">
-                  <a href="{{ $paginator.Next.URL }}" class="page-link">
-                    Next &raquo;
-                  </a>
-                </li>
-                {{ end }}
-              </ul>
-            </nav>
-            {{ end }}
-          </div>
         </div>
       </div>
 
@@ -108,4 +53,3 @@
 <!-- /news list -->
 
 {{ end }}
-
