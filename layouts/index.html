@@ -1,0 +1,92 @@
+{{ define "main" }}
+
+<section class="hero-section">
+    <div class="container-fluid px-5">
+        <!-- Main Glass Dashboard Container -->
+        <div class="glass-card">
+            <div class="row">
+
+                <!-- Left Column: Hero + Latest News -->
+                <div class="col-lg-9 pr-lg-5">
+
+                    <!-- Featured Post (Hero) -->
+                    {{ range first 1 (where site.RegularPages "Params.featured" true) }}
+                    <div class="featured-post mb-5 position-relative">
+                        <!-- 3D Orb Background -->
+                        <div class="blur-circle"></div>
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-8 position-relative" style="z-index: 2;">
+                                <div class="featured-content pt-4 pl-4">
+                                    <div class="tag-best">{{ i18n "best_of_week" }}</div>
+
+                                    <div class="meta-info">
+                                        <span class="text-primary font-weight-bold">{{ index .Params.categories 0
+                                            }}</span>
+                                        <span class="mx-2">•</span>
+                                        {{ .PublishDate.Format "4 hours ago" }}
+                                    </div>
+
+                                    <h1 class="featured-title">
+                                        <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title
+                                            }}</a>
+                                    </h1>
+
+                                    <div class="mb-4">
+                                        {{ range .Params.tags }}
+                                        <span class="badge badge-light text-muted mr-2 px-3 py-2 rounded-pill">#{{ .
+                                            }}</span>
+                                        {{ end }}
+                                    </div>
+
+                                    <a href="{{ .Permalink }}" class="btn-read">
+                                        {{ i18n "read_more" }}
+                                        <i class="ti-arrow-right ml-2" style="font-size: 0.8em;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Right side of Hero is empty to let the Orb shine through -->
+                        </div>
+                    </div>
+                    {{ end }}
+
+                    <!-- Latest News Section -->
+                    <div class="mt-5 pl-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div style="width: 20px; height: 2px; background: #0f172a; margin-right: 10px;"></div>
+                            <h5 class="font-weight-bold m-0" style="letter-spacing: 1px;">LATEST NEWS</h5>
+                        </div>
+
+                        <div class="row">
+                            {{ range first 3 (where site.RegularPages "Type" "news") }}
+                            <div class="col-md-4 mb-4">
+                                <div class="pr-3">
+                                    <div class="meta-info small mb-2">
+                                        <span class="text-primary font-weight-bold">{{ index .Params.categories 0
+                                            }}</span>
+                                    </div>
+                                    <h5 class="news-card-title">
+                                        <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title
+                                            }}</a>
+                                    </h5>
+                                    <p class="text-muted small" style="line-height: 1.6;">{{ .Summary | truncate 90 }}
+                                    </p>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Sidebar -->
+                <div class="col-lg-3 border-left border-light pl-lg-4">
+                    {{ partial "sidebar.html" . }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ end }}

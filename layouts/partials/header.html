@@ -1,0 +1,60 @@
+<header class="navigation">
+    <div class="container-fluid px-5"> <!-- Wider container -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- Logo Pill -->
+            <a class="navbar-brand" href="{{site.BaseURL | relLangURL}}">
+                {{ if .Site.Params.logo }}
+                <img src="{{ .Site.Params.logo | absURL }}" alt="Fluxio" class="img-fluid" style="max-height: 24px;">
+                {{ else }}
+                <i class="ti-world mr-2"></i> Fluxio
+                {{ end }}
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navigation">
+                <!-- Nav Pills -->
+                <ul class="navbar-nav mr-auto">
+                    {{ range site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ .URL | absLangURL }}">{{ .Name }} +</a>
+                    </li>
+                    {{ end }}
+                </ul>
+
+                <!-- Right Side: Lang + Search -->
+                <div class="d-flex align-items-center">
+                    <!-- Language Switcher -->
+                    <div class="dropdown mr-4">
+                        <a class="lang-switch dropdown-toggle text-decoration-none" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ .Site.Language.LanguageName }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm rounded-lg">
+                            {{ range .Site.Languages }}
+                            {{ if ne .LanguageName $.Site.Language.LanguageName }}
+                            <a class="dropdown-item" href="{{ .Lang | relURL }}">{{ .LanguageName }}</a>
+                            {{ end }}
+                            {{ end }}
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    {{ if site.Params.search }}
+                    <form class="form-inline position-relative" action="{{ site.BaseURL | relLangURL }}search/">
+                        <input class="search-box" type="search" placeholder="{{ i18n " search_placeholder" }}"
+                            id="search-query" name="s">
+                        <button class="search-icon border-0 bg-transparent" type="submit"
+                            style="position: absolute; right: 15px; top: 10px;">
+                            <i class="ti-search text-muted"></i>
+                        </button>
+                    </form>
+                    {{ end }}
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

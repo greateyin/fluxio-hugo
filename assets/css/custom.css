@@ -1,0 +1,209 @@
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 1);
+  --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+  /* Very subtle shadow */
+  --accent-color: #8b5cf6;
+  /* Softer purple matching the reference */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --bg-color: #f5f3ff;
+  /* Lavender background */
+  --nav-pill-bg: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  /* Simpler, lighter lavender gradient matching reference */
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main Glass Container */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  /* Large premium radius */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.01),
+    0 2px 4px -1px rgba(0, 0, 0, 0.01),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  padding: 40px;
+  margin-top: 20px;
+}
+
+/* Navigation */
+.navigation {
+  padding: 30px 0 10px;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary) !important;
+  background: white;
+  padding: 10px 24px;
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item .nav-link {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 24px !important;
+  margin: 0 6px;
+  background: var(--nav-pill-bg);
+  border-radius: 100px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item .nav-link:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Search Bar */
+.search-box {
+  border: none;
+  background: #f1f5f9;
+  border-radius: 100px;
+  padding: 12px 24px;
+  width: 300px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.search-box:focus {
+  background: white;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  outline: none;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-bottom: 40px;
+}
+
+.featured-post {
+  position: relative;
+  /* No background on the post itself, it sits on the glass card */
+}
+
+.tag-best {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent-color);
+  height: 20px;
+}
+
+.meta-info {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.featured-title {
+  font-size: 3.5rem;
+  /* Large and bold */
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  max-width: 90%;
+}
+
+.btn-read {
+  background: white;
+  color: var(--text-primary);
+  border-radius: 100px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 20px;
+}
+
+.btn-read:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+/* 3D Orb Effect */
+.blur-circle {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  /* Softer pastel gradient matching reference */
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, transparent 25%),
+    /* Bright highlight */
+    radial-gradient(circle at 65% 65%, rgba(167, 139, 250, 0.3) 0%, transparent 40%),
+    /* Soft purple shadow */
+    linear-gradient(135deg, #ddd6fe 0%, #c7d2fe 100%);
+  /* Lavender to light blue */
+  filter: blur(50px);
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sidebar */
+.widget-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.recommended-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.recommended-item:hover {
+  transform: translateX(4px);
+}
+
+.recommended-item img {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Latest News Grid */
+.news-card-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}

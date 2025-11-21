@@ -1,0 +1,31 @@
+<div class="widget pt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="widget-title mb-0">{{ i18n "recommended" }}</h5>
+        <a href="{{ " news" | absLangURL }}" class="text-muted small font-weight-bold text-decoration-none">{{ i18n
+            "view_all" }} ></a>
+    </div>
+
+    {{ range first 4 (where site.RegularPages "Type" "news") }}
+    <div class="recommended-item d-flex align-items-start">
+        <div class="mr-3" style="flex: 1;">
+            <span class="text-primary small font-weight-bold d-block mb-1" style="font-size: 0.75rem;">{{ index
+                .Params.categories 0 }}</span>
+            <h6 class="mt-0 mb-1 font-weight-bold" style="font-size: 0.95rem; line-height: 1.4; color: #334155;">
+                <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title }}</a>
+            </h6>
+            <span class="text-muted small" style="font-size: 0.75rem;">{{ .PublishDate.Format "4h ago" }}</span>
+        </div>
+        {{ if .Params.image }}
+        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
+            style="width: 70px; height: 70px; object-fit: cover;">
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+
+<!-- AdSpace / Extra Widget -->
+<div class="widget mt-5">
+    <div class="bg-light rounded-lg p-4 text-center">
+        <span class="text-muted small font-weight-bold">ADVERTISEMENT</span>
+    </div>
+</div>
