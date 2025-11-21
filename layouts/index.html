@@ -25,37 +25,43 @@
                         <!-- 3D Orb Background -->
                         <div class="blur-circle"></div>
 
-                        <div class="row align-items-center">
-                            <div class="col-lg-8 position-relative" style="z-index: 2;">
-                                <div class="featured-content pt-4 pl-4">
-                                    <div class="tag-best">{{ i18n "best_of_week" }}</div>
-
-                                    <div class="meta-info">
-                                        <span class="text-primary font-weight-bold">{{ index .Params.categories 0
-                                            }}</span>
-                                        <span class="mx-2">•</span>
-                                        {{ .PublishDate.Format "4 hours ago" }}
+                        <div class="featured-post-inner position-relative" style="z-index: 2;">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5 mb-4 mb-lg-0">
+                                    <div class="featured-post-media">
+                                        {{ partial "image.html" (dict "Src" .Params.Image "Alt" .Title "Class" "img-fluid") }}
                                     </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="featured-content">
+                                        <div class="tag-best">{{ i18n "best_of_week" }}</div>
 
-                                    <h1 class="featured-title">
-                                        <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title
-                                            }}</a>
-                                    </h1>
+                                        <div class="meta-info">
+                                            <span class="text-primary font-weight-bold">
+                                                {{ with index .Params.categories 0 }}{{ . }}{{ end }}
+                                            </span>
+                                            <span class="mx-2">•</span>
+                                            {{ .PublishDate.Format "Jan 02, 2006" }}
+                                        </div>
 
-                                    <div class="mb-4">
-                                        {{ range .Params.tags }}
-                                        <span class="badge badge-light text-muted mr-2 px-3 py-2 rounded-pill">#{{ .
-                                            }}</span>
-                                        {{ end }}
+                                        <h1 class="featured-title">
+                                            <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title }}</a>
+                                        </h1>
+
+                                        <div class="mb-4">
+                                            {{ range .Params.tags }}
+                                            <span
+                                                class="badge badge-light text-muted mr-2 px-3 py-2 rounded-pill">#{{ . }}</span>
+                                            {{ end }}
+                                        </div>
+
+                                        <a href="{{ .Permalink }}" class="btn-read">
+                                            {{ i18n "read_more" }}
+                                            <i class="ti-arrow-right ml-2" style="font-size: 0.8em;"></i>
+                                        </a>
                                     </div>
-
-                                    <a href="{{ .Permalink }}" class="btn-read">
-                                        {{ i18n "read_more" }}
-                                        <i class="ti-arrow-right ml-2" style="font-size: 0.8em;"></i>
-                                    </a>
                                 </div>
                             </div>
-                            <!-- Right side of Hero is empty to let the Orb shine through -->
                         </div>
                     </div>
                     {{ end }}
