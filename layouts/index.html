@@ -6,22 +6,11 @@
         <div class="glass-card">
             <!-- Top row: category pills + search -->
             <div class="row align-items-center hero-top-row mb-4">
-                <div class="col-lg-9 d-flex flex-wrap align-items-center">
+                <div class="col-12 d-flex flex-wrap align-items-center">
                     <div class="hero-chip-list">
                         <span class="hero-chip hero-chip-active">All</span>
                         <a class="hero-chip" href="{{ "news" | relLangURL }}">News</a>
                     </div>
-                </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    {{ if site.Params.search }}
-                    <form class="hero-search position-relative" action="{{ "search" | relLangURL }}">
-                        <input class="hero-search-input" type="search"
-                            placeholder="{{ i18n "search_placeholder" }}" id="hero-search-query" name="s">
-                        <button class="hero-search-icon border-0 bg-transparent" type="submit">
-                            <i class="ti-search text-muted"></i>
-                        </button>
-                    </form>
-                    {{ end }}
                 </div>
             </div>
 
