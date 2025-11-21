@@ -21,11 +21,7 @@
         <script id="search-result-template" type="text/x-js-template">
           <div class="search-result-card" id="summary-${key}">
             <div class="search-result-inner">
-              ${ isset image }
-              <div class="search-result-thumb">
-                <img src="${image}" alt="${title}">
-              </div>
-              ${ end }
+              ${ isset image }<div class="search-result-thumb"><img src="${image}" alt="${title}"></div>${ end }
               <div class="search-result-content">
                 <div class="search-result-meta">
                   ${ isset categories }<span class="search-result-category">${categories}</span>${ end }
