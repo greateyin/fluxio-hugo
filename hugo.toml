@@ -55,3 +55,8 @@ defaultContentLanguageInSubdir = true
   link = "plugins/search/mark.js"
   [[params.plugins.js]]
   link = "plugins/search/search.js"
+
+  # Virtual social profile (placeholder)
+  [[params.social]]
+  icon = "ti-github"
+  link = "#"
