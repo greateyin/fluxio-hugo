@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- page-title -->
-<section class="section bg-secondary">
+<section class="section bg-secondary search-page-header">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -17,16 +17,19 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 mx-auto">
-        <div id="search-results"></div>
+        <div id="search-results" class="search-results-list"></div>
         <script id="search-result-template" type="text/x-js-template">
-          <ul class="search-result list-unstyled" id="summary-${key}">
-            <li class="border-bottom mb-4 pb-3">
-              <h4><a class="text-dark" href="${link}">${title}</a></h4>
-              <p>${snippet}</p>
-              ${ isset tags }<p>Tags: ${tags}</p>${ end }
-              ${ isset categories }<p>Categories: ${categories}</p>${ end }
-            </li>
-          </ul>
+          <div class="search-result-card" id="summary-${key}">
+            <div class="search-result-meta">
+              ${ isset categories }<span class="search-result-category">${categories}</span>${ end }
+              ${ isset tags }<span class="search-result-tags"> · ${tags}</span>${ end }
+            </div>
+            <h3 class="search-result-title">
+              <a class="text-dark" href="${link}">${title}</a>
+            </h3>
+            <p class="search-result-snippet">${snippet}</p>
+            <a class="btn btn-transparent search-result-readmore" href="${link}">Continue...</a>
+          </div>
         </script>
       </div>
     </div>
@@ -38,7 +41,7 @@
 {{ "<!-- Search index -->" | safeHTML }}
 <script>
   // Use language-aware index.json so /en, /zh-cn, /zh-tw all work
-  var indexURL = {{ "index.json" | relLangURL | jsonify }};
+  var indexURL = '{{ "index.json" | relLangURL }}';
 </script>
 
 {{ end }}
