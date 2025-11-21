@@ -67,21 +67,29 @@
                             <h5 class="font-weight-bold m-0" style="letter-spacing: 1px;">LATEST NEWS</h5>
                         </div>
 
-                        <div class="row">
-                            {{ range first 3 (where site.RegularPages "Type" "news") }}
+                        {{ $news := where site.RegularPages "Type" "news" }}
+                        {{ $news = sort $news "Date" "desc" }}
+                        <div class="row latest-news-grid">
+                            {{ range first 9 $news }}
                             <div class="col-md-4 mb-4">
-                                <div class="pr-3">
-                                    <div class="meta-info small mb-2">
-                                        <span class="text-primary font-weight-bold">{{ index .Params.categories 0
-                                            }}</span>
+                                <article class="latest-news-card">
+                                    <div class="latest-news-thumb">
+                                        {{ partial "image.html" (dict "Src" .Params.Image "Alt" .Title "Class" "img-fluid") }}
                                     </div>
-                                    <h5 class="news-card-title">
-                                        <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title
-                                            }}</a>
-                                    </h5>
-                                    <p class="text-muted small" style="line-height: 1.6;">{{ .Summary | truncate 90 }}
-                                    </p>
-                                </div>
+                                    <div class="latest-news-body">
+                                        <div class="latest-news-meta">
+                                            <span class="latest-news-category">
+                                                {{ with index .Params.categories 0 }}{{ . }}{{ end }}
+                                            </span>
+                                            <span class="latest-news-dot">•</span>
+                                            <span class="latest-news-date">{{ .PublishDate.Format "Jan 02, 2006" }}</span>
+                                        </div>
+                                        <h5 class="latest-news-title">
+                                            <a href="{{ .Permalink }}" class="text-dark text-decoration-none">{{ .Title }}</a>
+                                        </h5>
+                                        <p class="latest-news-excerpt text-muted small">{{ .Summary | truncate 90 }}</p>
+                                    </div>
+                                </article>
                             </div>
                             {{ end }}
                         </div>
