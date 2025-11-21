@@ -496,6 +496,22 @@ footer.bg-secondary .text-center {
     0 0 0 1px rgba(248, 250, 252, 0.98);
 }
 
+.search-result-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.search-result-thumb img {
+  border-radius: 18px;
+  max-width: 200px;
+  object-fit: cover;
+}
+
+.search-result-content {
+  flex: 1;
+}
+
 .search-result-meta {
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -520,4 +536,14 @@ footer.bg-secondary .text-center {
 
 .search-result-readmore {
   padding-left: 0;
+}
+
+@media (max-width: 767px) {
+  .search-result-inner {
+    flex-direction: column;
+  }
+
+  .search-result-thumb img {
+    max-width: 100%;
+  }
 }
