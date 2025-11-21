@@ -30,6 +30,7 @@ defaultContentLanguageInSubdir = true
   author = "Fluxio Team"
   layout = "2"
   default_image = "images/placeholder.svg"
+  og_image = "images/placeholder.svg"
   # Custom CSS for Glassmorphism
   custom_css = ["css/custom.css"]
   
@@ -61,3 +62,9 @@ defaultContentLanguageInSubdir = true
   [[params.social]]
   icon = "ti-github"
   link = "#"
+
+  # Geo SEO (update to your actual location)
+  [params.geo]
+    region = "TW-TPE"
+    placename = "Taipei"
+    position = "25.0330;121.5654"
