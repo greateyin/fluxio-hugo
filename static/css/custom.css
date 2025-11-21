@@ -21,6 +21,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Make footer blend into page background instead of dark block */
+footer.bg-secondary {
+  background: transparent !important;
+}
+
+footer.bg-secondary .section {
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+footer.bg-secondary .text-center {
+  padding-bottom: 24px;
+}
+
+/* Global override of theme's peach secondary background (used on inner pages) */
+.bg-secondary {
+  background: transparent !important;
+}
+
 /* Main Glass Container */
 .glass-card {
   background: var(--glass-bg);
@@ -72,7 +91,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Search Bar */
+/* Search Bar in header (if used) */
 .search-box {
   border: none;
   background: #f1f5f9;
@@ -93,6 +112,14 @@ body {
 /* Hero Section */
 .hero-section {
   padding-bottom: 40px;
+  /* Override theme's white-to-peach gradient */
+  background: transparent !important;
+}
+
+/* Remove theme sticky header solid background so gradient shows through */
+.headroom {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .hero-top-row {

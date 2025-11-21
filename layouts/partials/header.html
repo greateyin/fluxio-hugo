@@ -44,11 +44,11 @@
 
                     <!-- Search -->
                     {{ if site.Params.search }}
-                    <form class="form-inline position-relative" action="{{ site.BaseURL | relLangURL }}search/">
-                        <input class="search-box" type="search" placeholder="{{ i18n " search_placeholder" }}"
+                    <form class="form-inline position-relative" action="{{ "search" | relLangURL }}">
+                        <input class="search-box" type="search" placeholder="{{ i18n "search_placeholder" }}"
                             id="search-query" name="s">
                         <button class="search-icon border-0 bg-transparent" type="submit"
-                            style="position: absolute; right: 15px; top: 10px;">
+                            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
                             <i class="ti-search text-muted"></i>
                         </button>
                     </form>
