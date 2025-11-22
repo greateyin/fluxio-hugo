@@ -1,10 +1,12 @@
 {{ define "main" }}
 
 <!-- checking blog -->
-{{ if or (eq .Section "post") (eq .Section "posts") (eq .Section "blog") (eq .Section "blogs") (eq .Section "news") (eq .Section "categories") (eq .Section "tags") }}
+{{ if or (eq .Section "post") (eq .Section "posts") (eq .Section "blog") (eq .Section "blogs") (eq .Section "news") (eq
+.Section "categories") (eq .Section "tags") }}
 
 <!-- page-title -->
-<section class="section bg-secondary">
+<section class="section"
+  style="background: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border);">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

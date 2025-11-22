@@ -1,24 +1,82 @@
 :root {
+  /* Color Palette - Violet Scale */
+  --color-violet-50: #f5f3ff;
+  --color-violet-100: #ede9fe;
+  --color-violet-200: #ddd6fe;
+  --color-violet-300: #c4b5fd;
+  --color-violet-400: #a78bfa;
+  --color-violet-500: #8b5cf6;
+  /* Primary Brand Color */
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+  --color-violet-800: #5b21b6;
+  --color-violet-900: #4c1d95;
+  --color-violet-950: #2e1065;
+
+  /* Color Palette - Slate Scale (Text) */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+
+  /* Semantic Colors */
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(255, 255, 255, 1);
   --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-  /* Very subtle shadow */
-  --accent-color: #8b5cf6;
-  /* Softer purple matching the reference */
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --bg-color: #f5f3ff;
-  /* Lavender background */
+
+  --accent-color: var(--color-violet-500);
+  --accent-hover: var(--color-violet-600);
+  --accent-light: var(--color-violet-100);
+
+  --text-primary: var(--color-slate-800);
+  --text-secondary: var(--color-slate-500);
+  --text-muted: var(--color-slate-400);
+
+  --bg-color: var(--color-violet-50);
+  --bg-gradient-start: var(--color-violet-50);
+  --bg-gradient-mid: var(--color-violet-100);
+  --bg-gradient-end: var(--color-violet-200);
+
   --nav-pill-bg: rgba(255, 255, 255, 0.7);
+
+  /* Typography */
+  --font-body: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-heading: 'Montserrat', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-mono: 'Fira Code', 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
 }
 
 body {
   /* Simpler, lighter lavender gradient matching reference */
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  font-family: var(--font-body);
   color: var(--text-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography - 全局標題樣式 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.featured-title,
+.widget-title,
+.news-card-title,
+.footer-title,
+.brand-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Main Glass Container */
@@ -75,7 +133,7 @@ body {
 /* Search Bar */
 .search-box {
   border: none;
-  background: #f1f5f9;
+  background: var(--color-slate-100);
   border-radius: 100px;
   padding: 12px 24px;
   width: 300px;
@@ -86,7 +144,7 @@ body {
 
 .search-box:focus {
   background: white;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
   outline: none;
 }
 
@@ -128,9 +186,9 @@ body {
 }
 
 .hero-chip-active {
-  background: linear-gradient(135deg, #a855f7, #6366f1);
+  background: linear-gradient(135deg, var(--color-violet-500), var(--color-violet-600));
   color: white;
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
 }
 
 .hero-search {
@@ -151,14 +209,14 @@ body {
 }
 
 .hero-search-input::placeholder {
-  color: #9ca3af;
+  color: var(--color-slate-400);
 }
 
 .hero-search-input:focus {
   outline: none;
   box-shadow:
-    0 0 0 1px rgba(124, 58, 237, 0.4),
-    0 18px 40px rgba(79, 70, 229, 0.28);
+    0 0 0 1px rgba(139, 92, 246, 0.4),
+    0 18px 40px rgba(139, 92, 246, 0.28);
   background: white;
 }
 
@@ -244,7 +302,7 @@ body {
     /* Bright highlight */
     radial-gradient(circle at 65% 65%, rgba(167, 139, 250, 0.3) 0%, transparent 40%),
     /* Soft purple shadow */
-    linear-gradient(135deg, #ddd6fe 0%, #c7d2fe 100%);
+    linear-gradient(135deg, var(--color-violet-200) 0%, var(--color-violet-300) 100%);
   /* Lavender to light blue */
   filter: blur(50px);
   opacity: 0.9;
@@ -302,14 +360,14 @@ body {
 }
 
 .hero-sidebar-search-input::placeholder {
-  color: #9ca3af;
+  color: var(--color-slate-400);
 }
 
 .hero-sidebar-search-input:focus {
   outline: none;
   box-shadow:
-    0 0 0 1px rgba(124, 58, 237, 0.4),
-    0 18px 40px rgba(79, 70, 229, 0.28);
+    0 0 0 1px rgba(139, 92, 246, 0.4),
+    0 18px 40px rgba(139, 92, 246, 0.28);
   background: white;
 }
 
@@ -479,7 +537,7 @@ body {
 }
 
 .glass-input::placeholder {
-  color: #9ca3af;
+  color: var(--color-slate-400);
 }
 
 .header-search .search-icon {
@@ -673,21 +731,21 @@ body {
     margin: 8px 0;
     text-align: center;
   }
-  
+
   .header-search {
     margin-left: 0;
     margin-top: 16px;
     width: 100%;
   }
-  
+
   .glass-input {
     width: 100%;
   }
-  
+
   .glass-footer {
     padding: 32px 24px;
   }
-  
+
   .footer-description {
     max-width: 100%;
   }
@@ -697,11 +755,11 @@ body {
   .modern-footer {
     margin-top: 40px;
   }
-  
+
   .glass-footer {
     padding: 24px 16px;
   }
-  
+
   .footer-bottom {
     margin-top: 24px;
   }
@@ -773,102 +831,65 @@ body {
   line-height: 1.8;
 }
 
-/* Code Blocks - 統一玻璃態設計 */
-.blog-content-wrapper pre {
+/* Code Blocks - GitHub Style Container */
+/* Hugo Chroma 會自動處理語法高亮顏色（noClasses = true） */
+.blog-content-wrapper pre,
+.content pre,
+pre.chroma,
+.highlight pre,
+div.highlight pre {
   position: relative;
-  /* 淺色玻璃態背景 - 與整體 UI 統一 */
-  background: rgba(248, 250, 252, 0.98);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  border-radius: 20px;
-  padding: 20px;
-  padding-top: 50px;
+  background: #f6f8fa !important;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  padding-top: 48px;
+  /* Space for copy button */
   margin: 24px 0;
   overflow-x: auto;
-  overflow-y: hidden;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  line-height: 1.45;
+  box-shadow: none;
 }
 
-/* Code Block Header (語言標籤區) */
-.blog-content-wrapper pre::before {
-  content: 'Python';
-  position: absolute;
-  top: 12px;
-  left: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.blog-content-wrapper pre code {
+.blog-content-wrapper pre code,
+.content pre code,
+pre.chroma code,
+.highlight pre code,
+div.highlight pre code {
   background: transparent;
   border: none;
   padding: 0;
-  font-family: 'Fira Code', 'Monaco', 'Menlo', 'Consolas', monospace;
-  color: var(--text-primary);
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-size: inherit;
+  line-height: inherit;
   display: block;
   white-space: pre;
   overflow: visible;
 }
 
-/* 改善 code block 內的語法高亮 - 適合淺色背景 */
-.blog-content-wrapper pre code .hljs-keyword,
-.blog-content-wrapper pre code .hljs-selector-tag,
-.blog-content-wrapper pre code .hljs-literal,
-.blog-content-wrapper pre code .hljs-section,
-.blog-content-wrapper pre code .hljs-link {
-  color: #8b5cf6;
-  font-weight: 600;
+/* 確保 Chroma 生成的 span 標籤不影響間距 */
+.blog-content-wrapper pre code span,
+.content pre code span,
+pre.chroma code span {
+  line-height: inherit;
+  display: inline;
+  padding: 0;
+  margin: 0;
 }
 
-.blog-content-wrapper pre code .hljs-string,
-.blog-content-wrapper pre code .hljs-title,
-.blog-content-wrapper pre code .hljs-name,
-.blog-content-wrapper pre code .hljs-type {
-  color: #10b981;
-  font-weight: 500;
-}
 
-.blog-content-wrapper pre code .hljs-number,
-.blog-content-wrapper pre code .hljs-symbol,
-.blog-content-wrapper pre code .hljs-bullet,
-.blog-content-wrapper pre code .hljs-built_in {
-  color: #f59e0b;
-  font-weight: 600;
-}
 
-.blog-content-wrapper pre code .hljs-function,
-.blog-content-wrapper pre code .hljs-params {
-  color: #3b82f6;
-  font-weight: 500;
-}
-
-.blog-content-wrapper pre code .hljs-comment,
-.blog-content-wrapper pre code .hljs-quote {
-  color: #9ca3af;
-  font-style: italic;
-}
-
-.blog-content-wrapper pre code .hljs-operator,
-.blog-content-wrapper pre code .hljs-punctuation {
-  color: var(--text-secondary);
-}
-
-/* Inline Code */
+/* Inline Code - GitHub Style */
 .blog-content-wrapper code {
-  background: rgba(139, 92, 246, 0.1);
-  color: #8b5cf6;
-  padding: 3px 8px;
+  background: rgba(175, 184, 193, 0.2);
+  color: #24292f;
+  padding: 0.2em 0.4em;
   border-radius: 6px;
   font-size: 0.9em;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-weight: 500;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-weight: normal;
 }
 
 /* Lists */
@@ -911,7 +932,7 @@ body {
 /* Mermaid Diagrams */
 .blog-content-wrapper .mermaid {
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-slate-200);
   border-radius: 16px;
   padding: 32px;
   margin: 32px 0;
@@ -935,11 +956,11 @@ body {
 .blog-content-wrapper td {
   padding: 16px;
   text-align: left;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-slate-200);
 }
 
 .blog-content-wrapper th {
-  background: #f8fafc;
+  background: var(--color-slate-50);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -952,7 +973,7 @@ body {
 .blog-content-wrapper hr {
   border: none;
   height: 1px;
-  background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+  background: linear-gradient(to right, transparent, var(--color-slate-200), transparent);
   margin: 48px 0;
 }
 
@@ -967,7 +988,7 @@ body {
 }
 
 .blog-content-wrapper a:hover {
-  color: #7c3aed;
+  color: var(--color-violet-600);
   text-decoration-color: rgba(124, 58, 237, 0.6);
 }
 
@@ -1095,4 +1116,71 @@ body {
   background-size: contain;
   opacity: 0.8;
   vertical-align: middle;
+}
+
+/* ========================================
+   CHINESE TYPOGRAPHY OPTIMIZATION
+   中文字型優化
+   ======================================== */
+
+/* 中文段落優化 */
+.blog-content-wrapper p:lang(zh),
+.blog-content-wrapper p:lang(zh-TW),
+.blog-content-wrapper p:lang(zh-CN) {
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* 中文標題優化 */
+h1:lang(zh),
+h1:lang(zh-TW),
+h1:lang(zh-CN),
+h2:lang(zh),
+h2:lang(zh-TW),
+h2:lang(zh-CN),
+h3:lang(zh),
+h3:lang(zh-TW),
+h3:lang(zh-CN),
+h4:lang(zh),
+h4:lang(zh-TW),
+h4:lang(zh-CN) {
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+/* 確保按鈕和導航使用正確字型 */
+.btn,
+.nav-link,
+.navbar-brand,
+.glass-btn,
+.glass-nav-link,
+button {
+  font-family: var(--font-body);
+}
+
+/* 確保所有標題類使用標題字型 */
+.hero-chip,
+.meta-info,
+.tag-best {
+  font-family: var(--font-body);
+}
+
+/* Featured Title 特殊處理 */
+.featured-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* 中文 Featured Title */
+.featured-title:lang(zh),
+.featured-title:lang(zh-TW),
+.featured-title:lang(zh-CN) {
+  letter-spacing: 0.02em;
+}
+
+/* 確保表格和引用區塊使用正文字型 */
+.blog-content-wrapper table,
+.blog-content-wrapper blockquote {
+  font-family: var(--font-body);
 }
