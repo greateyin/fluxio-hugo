@@ -63,6 +63,11 @@ function populateResults(result){
     if(snippet.length<1){
       snippet += contents.substring(0,summaryInclude*2);
     }
+    // trim snippet for consistent card height
+    if(snippet.length > 240){
+      snippet = snippet.substring(0,240) + "…";
+    }
+    var imageUrl = value.item.image && value.item.image.length ? value.item.image : searchPlaceholder;
     //pull template from hugo templarte definition
     var templateDefinition = $('#search-result-template').html();
     //replace values (add image so template can show thumbnail)
@@ -73,9 +78,21 @@ function populateResults(result){
       tags:value.item.tags,
       categories:value.item.categories,
       snippet:snippet,
-      image:value.item.image
+      image:imageUrl,
+      placeholder:searchPlaceholder
     });
     $('#search-results').append(output);
+
+    // Ensure placeholder is applied even if template replacement fails
+    var $img = $("#summary-"+key+" img");
+    var currentSrc = $img.attr("src");
+    if(!currentSrc || currentSrc.indexOf("${placeholder}") !== -1){
+      $img.attr("src", searchPlaceholder);
+    }
+    $img.on("error", function(){
+      this.onerror=null;
+      this.src = searchPlaceholder;
+    });
 
     $.each(snippetHighlights,function(snipkey,snipvalue){
       $("#summary-"+key).mark(snipvalue);
@@ -112,4 +129,3 @@ function render(templateString, data) {
   }
   return templateString;
 }
-

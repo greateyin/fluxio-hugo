@@ -53,6 +53,7 @@ defaultContentLanguageInSubdir = true
   description = "Fluxio - Modern Tech News"
   author = "Fluxio Team"
   layout = "2"
+  logo = "images/logo.svg"
   default_image = "images/placeholder.svg"
   og_image = "images/placeholder.svg"
   # Custom CSS for Glassmorphism
@@ -81,6 +82,10 @@ defaultContentLanguageInSubdir = true
   link = "plugins/search/mark.js"
   [[params.plugins.js]]
   link = "plugins/search/search.js"
+  [[params.plugins.js]]
+  link = "plugins/headroom/headroom.js"
+  [[params.plugins.js]]
+  link = "plugins/masonry/masonry.js"
 
   # Virtual social profile (placeholder)
   [[params.social]]

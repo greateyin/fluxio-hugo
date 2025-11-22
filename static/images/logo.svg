@@ -1,0 +1,20 @@
+<svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon: Abstract Flux Shape -->
+  <path d="M10 20 C 10 10, 25 10, 25 20 S 40 30, 40 20" 
+        stroke="url(#logo-grad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="10" cy="20" r="3" fill="#8b5cf6"/>
+  <circle cx="40" cy="20" r="3" fill="#6366f1"/>
+
+  <!-- Text -->
+  <text x="50" y="26" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-weight="800" font-size="22" fill="#1e293b" letter-spacing="-0.5">
+    Fluxio
+  </text>
+</svg>

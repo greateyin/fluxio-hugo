@@ -1,18 +1,42 @@
 <svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e0e7ff"/>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f3ff"/>
       <stop offset="50%" stop-color="#ede9fe"/>
-      <stop offset="100%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
     </linearGradient>
+    <linearGradient id="orb-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="orb-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+    </filter>
   </defs>
-  <rect x="0" y="0" width="320" height="200" rx="32" fill="url(#grad)"/>
-  <circle cx="110" cy="90" r="46" fill="rgba(255,255,255,0.9)"/>
-  <circle cx="200" cy="120" r="40" fill="rgba(255,255,255,0.6)"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
-        font-size="14" fill="#64748b">
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="320" height="200" fill="url(#bg-grad)"/>
+  
+  <!-- Abstract Orbs with Blur -->
+  <circle cx="260" cy="40" r="60" fill="url(#orb-grad-1)" filter="url(#blur-filter)"/>
+  <circle cx="40" cy="160" r="50" fill="url(#orb-grad-2)" filter="url(#blur-filter)"/>
+  
+  <!-- Glass Card Effect (Subtle overlay) -->
+  <rect x="0" y="0" width="320" height="200" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Text -->
+  <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+        font-weight="800" font-size="28" fill="#1e293b" letter-spacing="-0.5">
     Fluxio
   </text>
+  <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+        font-weight="600" font-size="10" fill="#64748b" letter-spacing="2">
+    MODERN TECH NEWS
+  </text>
 </svg>
-

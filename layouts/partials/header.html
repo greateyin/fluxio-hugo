@@ -4,7 +4,7 @@
             <!-- Glass Logo Brand -->
             <a class="navbar-brand glass-brand" href="{{site.BaseURL | relLangURL}}">
                 {{ if .Site.Params.logo }}
-                <img src="{{ .Site.Params.logo | absURL }}" alt="Fluxio" class="img-fluid" style="max-height: 24px;">
+                <img src="{{ .Site.Params.logo | absURL }}" alt="Fluxio" class="img-fluid" style="max-height: 32px;">
                 {{ else }}
                 <i class="ti-world mr-2"></i><span class="brand-text">Fluxio</span>
                 {{ end }}
@@ -43,15 +43,10 @@
                         </div>
                     </div>
 
-                    <!-- Subscribe Button -->
-                    <a href="#subscribe" class="btn btn-sm btn-primary ml-3 d-none d-lg-inline-block"
-                        style="border-radius: 100px; padding: 8px 20px; font-weight: 600; font-size: 0.85rem; background: var(--accent-color); border: none; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);">
-                        Subscribe
-                    </a>
 
                     <!-- Search -->
                     {{ if site.Params.search }}
-                    <form class="header-search" action="{{ " search" | relLangURL }}">
+                    <form class="header-search" action="{{ "search" | relLangURL }}">
                         <div class="search-wrapper">
                             <input class="search-box glass-input" type="search"
                                 placeholder="Article name, tag, category..." id="search-query" name="s">
