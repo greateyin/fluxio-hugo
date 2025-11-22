@@ -7,3 +7,29 @@ categories: ["Blockchain News"]
 ---
 
 This is a standard news post. It should appear in the "Latest News" or "Recommended" section.
+
+## Code Sample
+
+```js
+function fetchSignal(symbol) {
+  return fetch(`/api/signal?symbol=${symbol}`).then((r) => r.json());
+}
+
+fetchSignal('BTC').then(({ score }) => console.log('Signal', score));
+```
+
+## Mermaid Diagram
+
+{{< mermaid >}}
+flowchart LR
+    Price[(BTC Price)] -->|trend| Signal[On-chain Signal]
+    Signal --> ETF[ETF Demand]
+    ETF --> Volume[Spot Volume]
+    Volume --> Price
+{{< /mermaid >}}
+
+## Shortcodes Demo
+
+- Amazon：{{< amazon-affiliate asin="B08N5WRWNW" >}}View on Amazon{{< /amazon-affiliate >}}
+- Buy Me a Coffee：{{< buy-me-a-coffee id="yourname" message="Thanks for reading" >}}Support this article{{< /buy-me-a-coffee >}}
+- PayPal.Me：{{< paypal-me user="yourname" amount="5" currency="USD" >}}Tip via PayPal{{< /paypal-me >}}

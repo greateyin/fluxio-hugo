@@ -1,39 +1,39 @@
-<header class="navigation">
-    <div class="container-fluid px-5"> <!-- Wider container -->
+<header class="navigation modern-header">
+    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <!-- Logo Pill -->
-            <a class="navbar-brand" href="{{site.BaseURL | relLangURL}}">
+            <!-- Glass Logo Brand -->
+            <a class="navbar-brand glass-brand" href="{{site.BaseURL | relLangURL}}">
                 {{ if .Site.Params.logo }}
                 <img src="{{ .Site.Params.logo | absURL }}" alt="Fluxio" class="img-fluid" style="max-height: 24px;">
                 {{ else }}
-                <i class="ti-world mr-2"></i> Fluxio
+                <i class="ti-world mr-2"></i><span class="brand-text">Fluxio</span>
                 {{ end }}
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+            <button class="navbar-toggler glass-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
                 aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navigation">
-                <!-- Nav Pills -->
-                <ul class="navbar-nav mr-auto">
+                <!-- Nav Pills - Glass Style -->
+                <ul class="navbar-nav mx-auto">
                     {{ range site.Menus.main }}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ .URL | absLangURL }}">{{ .Name }} +</a>
+                        <a class="nav-link glass-nav-link" href="{{ .URL | absLangURL }}">{{ .Name }}</a>
                     </li>
                     {{ end }}
                 </ul>
 
                 <!-- Right Side: Lang + Search -->
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center header-actions">
                     <!-- Language Switcher -->
-                    <div class="dropdown mr-4">
-                        <a class="lang-switch dropdown-toggle text-decoration-none" href="#" role="button"
+                    <div class="dropdown lang-dropdown">
+                        <button class="btn glass-btn dropdown-toggle" type="button" id="langDropdown" 
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ .Site.Language.LanguageName }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm rounded-lg">
+                            {{ .Site.Language.LanguageName }} 
+                        </button>
+                        <div class="dropdown-menu glass-dropdown" aria-labelledby="langDropdown">
                             {{ range .Site.Languages }}
                             {{ if ne .LanguageName $.Site.Language.LanguageName }}
                             <a class="dropdown-item" href="{{ .Lang | relURL }}">{{ .LanguageName }}</a>
@@ -44,13 +44,15 @@
 
                     <!-- Search -->
                     {{ if site.Params.search }}
-                    <form class="form-inline position-relative" action="{{ "search" | relLangURL }}">
-                        <input class="search-box" type="search" placeholder="{{ i18n "search_placeholder" }}"
-                            id="search-query" name="s">
-                        <button class="search-icon border-0 bg-transparent" type="submit"
-                            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
-                            <i class="ti-search text-muted"></i>
-                        </button>
+                    <form class="header-search" action="{{ "search" | relLangURL }}">
+                        <div class="search-wrapper">
+                            <input class="search-box glass-input" type="search" 
+                                placeholder="Article name, tag, category..."
+                                id="search-query" name="s">
+                            <button class="search-icon" type="submit">
+                                <i class="ti-search"></i>
+                            </button>
+                        </div>
                     </form>
                     {{ end }}
                 </div>

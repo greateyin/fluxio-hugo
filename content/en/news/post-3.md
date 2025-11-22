@@ -7,3 +7,28 @@ categories: ["Blockchain News"]
 ---
 
 Third standard news post.
+
+## Code Sample
+
+```bash
+curl -s https://api.example.com/sol/ohlcv | head -n 5
+```
+
+## Mermaid Diagram
+
+{{< mermaid >}}
+sequenceDiagram
+    participant Trader
+    participant DEX
+    participant Oracle
+    Trader->>DEX: Submit swap
+    DEX->>Oracle: Fetch SOL price
+    Oracle-->>DEX: Latest price
+    DEX-->>Trader: Execute trade
+{{< /mermaid >}}
+
+## Shortcodes Demo
+
+- Amazon：{{< amazon-affiliate asin="B08N5WRWNW" >}}View book list{{< /amazon-affiliate >}}
+- Buy Me a Coffee：{{< buy-me-a-coffee id="yourname" message="Appreciate Solana coverage" >}}Send coffee{{< /buy-me-a-coffee >}}
+- PayPal.Me：{{< paypal-me user="yourname" amount="7" currency="USD" >}}Support via PayPal{{< /paypal-me >}}

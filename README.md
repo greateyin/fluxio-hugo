@@ -333,3 +333,13 @@ hugo server -D -F
 - Buy Me a Coffee：{{</* buy-me-a-coffee id="yourname" message="Appreciate it!" */>}}請我喝咖啡{{</* /buy-me-a-coffee */>}}
 - PayPal.Me：{{</* paypal-me user="yourname" amount="5" currency="USD" */>}}小額贊助{{</* /paypal-me */>}}
 ```
+
+---
+
+## 12. Sitemap / Robots.txt（Search Console 強化）
+
+- `hugo.toml` 已設定：`home` 輸出包含 `SITEMAP` / `ROBOTS`，並設定 sitemap 頻率為每日、priority 0.7。
+- 產物：
+  - `/sitemap.xml`（多語系 URL 皆會列出）
+  - `/robots.txt`（含 `Sitemap: https://your-domain/sitemap.xml`，並針對 Googlebot / Bingbot / GPTBot / CCBot / ClaudeBot / PerplexityBot 顯式 Allow）
+- 提交到 Google Search Console / Bing Webmaster 時，直接使用 `https://your-domain/sitemap.xml`。

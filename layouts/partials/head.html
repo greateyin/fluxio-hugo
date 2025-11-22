@@ -4,17 +4,23 @@
 
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
-  {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  <meta name="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  {{ with site.Params.author }}
+  <meta name="author" content="{{ . }}">{{ end }}
   <!-- theme meta -->
   <meta name="theme-name" content="parsa-hugo" />
   {{ hugo.Generator }}
 
   {{ "<!-- geo meta -->" | safeHTML }}
-  {{ with site.Params.geo.region }}<meta name="geo.region" content="{{ . }}">{{ end }}
-  {{ with site.Params.geo.placename }}<meta name="geo.placename" content="{{ . }}">{{ end }}
-  {{ with site.Params.geo.position }}<meta name="geo.position" content="{{ . }}">{{ end }}
-  {{ with site.Params.geo.position }}<meta name="ICBM" content="{{ . }}">{{ end }}
+  {{ with site.Params.geo.region }}
+  <meta name="geo.region" content="{{ . }}">{{ end }}
+  {{ with site.Params.geo.placename }}
+  <meta name="geo.placename" content="{{ . }}">{{ end }}
+  {{ with site.Params.geo.position }}
+  <meta name="geo.position" content="{{ . }}">{{ end }}
+  {{ with site.Params.geo.position }}
+  <meta name="ICBM" content="{{ . }}">{{ end }}
 
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range site.Params.plugins.css }}
@@ -26,6 +32,17 @@
   <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
 
   {{ "<!-- Custom Stylesheet (Glassmorphism) -->" | safeHTML }}
+  {{ $customCSS := resources.Get "css/custom.css" }}
+  {{ if $customCSS }}
+    {{ if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
+    {{ else }}
+      {{ $customCSS = $customCSS | minify }}
+      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
+    {{ end }}
+  {{ end }}
+  
+  {{ "<!-- Additional Custom CSS from config -->" | safeHTML }}
   {{ range site.Params.custom_css }}
   <link rel="stylesheet" href="{{ . | absURL }}">
   {{ end }}
@@ -33,16 +50,16 @@
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
   <link rel="icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
-  
+
   {{ "<!-- Open Graph / Twitter -->" | safeHTML }}
   {{ $ogTitle := cond (ne .Title "") .Title site.Title }}
   {{ $ogDesc := cond (ne .Description "") .Description site.Params.description }}
   {{ $ogImage := .Params.image }}
   {{ if not $ogImage }}
-    {{ with site.Params.og_image }}{{ $ogImage = . }}{{ end }}
+  {{ with site.Params.og_image }}{{ $ogImage = . }}{{ end }}
   {{ end }}
   {{ if not $ogImage }}
-    {{ with site.Params.default_image }}{{ $ogImage = . }}{{ end }}
+  {{ with site.Params.default_image }}{{ $ogImage = . }}{{ end }}
   {{ end }}
 
   <meta property="og:site_name" content="{{ site.Title }}">
@@ -55,8 +72,8 @@
   {{ end }}
   {{ if .IsPage }}
   <meta property="article:section" content="{{ .Section }}">
-  <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
-  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:published_time" content="{{ .PublishDate.Format " 2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format " 2006-01-02T15:04:05Z07:00" }}">
   {{ end }}
 
   <meta name="twitter:card" content="summary_large_image">
@@ -77,24 +94,29 @@
 
   <!-- Facebook Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', 'YOUR_PIXEL_ID');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
-  /></noscript>
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
+
+  <!-- Code Copy Button Script -->
+  <script src="{{ " js/code-copy.js" | absURL }}" defer></script>
 
 </head>

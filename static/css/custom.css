@@ -678,3 +678,46 @@ footer.bg-secondary .text-center {
   box-shadow: 0 16px 32px rgba(15, 23, 42, 0.16);
   filter: brightness(1.05);
 }
+
+/* Code blocks spacing/size and copy button layout */
+.post-content .highlight,
+.post-content pre,
+article.content .highlight,
+article.content pre {
+  margin: 6px 0 !important;
+  padding: 8px 10px !important;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 320px;
+  position: relative;
+}
+
+.post-content .highlight pre,
+.post-content pre code,
+article.content .highlight pre,
+article.content pre code {
+  padding: 0 !important;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  background: transparent !important;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}

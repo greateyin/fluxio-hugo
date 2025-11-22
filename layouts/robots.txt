@@ -1,0 +1,25 @@
+{{- $sitemap := "sitemap.xml" | absURL -}}
+# Explicitly allow major search/AI crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Fallback for all others
+User-agent: *
+Allow: /
+
+Sitemap: {{ $sitemap }}

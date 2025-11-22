@@ -7,3 +7,30 @@ categories: ["Blockchain News"]
 ---
 
 Another standard news post.
+
+## Code Sample
+
+```python
+def forecast(token, horizon=30):
+    trend = 0.12
+    noise = 0.03
+    return trend * horizon - noise
+
+print("STX forecast:", forecast("STX"))
+```
+
+## Mermaid Diagram
+
+{{< mermaid >}}
+graph TD
+    A[STX Narrative] --> B[Developer Activity]
+    B --> C[User Adoption]
+    C --> D[Price Momentum]
+    D --> A
+{{< /mermaid >}}
+
+## Shortcodes Demo
+
+- Amazon：{{< amazon-affiliate asin="B08N5WRWNW" >}}Check the gear{{< /amazon-affiliate >}}
+- Buy Me a Coffee：{{< buy-me-a-coffee id="yourname" >}}Fuel this research{{< /buy-me-a-coffee >}}
+- PayPal.Me：{{< paypal-me user="yourname" amount="3" currency="USD" >}}Send a small tip{{< /paypal-me >}}

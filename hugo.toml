@@ -5,7 +5,7 @@ defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "SITEMAP", "ROBOTS"]
 
 
 [languages]
@@ -24,6 +24,11 @@ defaultContentLanguageInSubdir = true
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[sitemap]
+  changefreq = "daily"
+  priority = 0.7
+  filename = "sitemap.xml"
 
 [params]
   description = "Fluxio - Modern Tech News"

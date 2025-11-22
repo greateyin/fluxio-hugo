@@ -1,51 +1,76 @@
-<footer class="bg-secondary">
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          {{ with site.Params.logo }}
-          <a href="{{site.BaseURL}}">
-            {{ partial "image.html" (dict "Src" . "Alt" "Image" "Class" "img-fluid" ) }}
+<footer class="modern-footer">
+  <div class="container">
+    <div class="footer-content glass-footer">
+      <div class="row align-items-center py-4">
+        <!-- Left: Brand & Description -->
+        <div class="col-md-4 mb-4 mb-md-0">
+          <a href="{{site.BaseURL}}" class="footer-brand d-inline-block mb-3">
+            {{ if site.Params.logo }}
+              {{ partial "image.html" (dict "Src" site.Params.logo "Alt" "Fluxio Logo" "Class" "footer-logo" ) }}
+            {{ else }}
+              <i class="ti-world mr-2"></i><span class="brand-text">Fluxio</span>
+            {{ end }}
           </a>
-          {{ end }}
+          <p class="footer-description">{{ with site.Params.description }}{{ . }}{{ else }}Modern Tech News & Insights{{ end }}</p>
         </div>
-        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          {{ if .Site.Params.address }}
-          <h6>Address</h6>
-          <ul class="list-unstyled">
-            <li class="font-secondary text-dark">{{site.Params.address | markdownify }}</li>
-          </ul>
-          {{ end }}
-        </div>
-        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          {{ if or  .Site.Params.mobile  .Site.Params.email }}         
-          <h6>Contact Info</h6>
-          <ul class="list-unstyled">
-            {{ if .Site.Params.mobile }}
-            <li class="font-secondary text-dark">Tel : {{ .Site.Params.mobile | markdownify }}</li>
-            {{ end }}
-            {{ if .Site.Params.email }}           
-            <li class="font-secondary text-dark">Email : {{ .Site.Params.email | markdownify }}</li>
+
+        <!-- Center: Quick Links -->
+        <div class="col-md-4 mb-4 mb-md-0 text-center">
+          <h6 class="footer-title">Quick Links</h6>
+          <ul class="footer-links list-unstyled mb-0">
+            {{ range site.Menus.main }}
+            <li><a href="{{ .URL | absLangURL }}" class="footer-link">{{ .Name }}</a></li>
             {{ end }}
           </ul>
-          {{ end }}
         </div>
-        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          <h6>Follow</h6>
-          <ul class="list-inline d-inline-block">
+
+        <!-- Right: Social & Follow -->
+        <div class="col-md-4 text-md-right">
+          <h6 class="footer-title">Follow</h6>
+          <ul class="social-links list-inline mb-3">
             {{ range site.Params.social }}
-            <li class="list-inline-item"><a href="{{ .link | safeURL }}" class="text-dark"><i class="{{ .icon }}"></i></a></li>
+            <li class="list-inline-item">
+              <a href="{{ .link | safeURL }}" class="social-link" aria-label="Social link">
+                <i class="{{ .icon }}"></i>
+              </a>
+            </li>
             {{ end }}
           </ul>
+          
+          {{ if or site.Params.email site.Params.mobile }}
+          <div class="footer-contact mt-3">
+            {{ if site.Params.email }}
+            <a href="mailto:{{ site.Params.email }}" class="footer-contact-link">
+              <i class="ti-email mr-2"></i>{{ site.Params.email }}
+            </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-left">
+            <p class="copyright mb-md-0">
+              {{ with site.Params.copyright }}
+                {{ . | markdownify }}
+              {{ else }}
+                &copy; {{ now.Year }} {{ site.Title }} All rights reserved.
+              {{ end }}
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-right">
+            <p class="footer-meta mb-0">
+              Built with <span class="text-accent">&hearts;</span> using Hugo
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="text-center pb-3">
-    <p class="mb-0">© {{ now.Format "2006" }} {{ site.Title }} All rights reserved.</p>
-  </div>
 </footer>
-
 
 {{ "<!-- JS Plugins -->" | safeHTML }}
 {{ range site.Params.plugins.js}}
@@ -58,6 +83,7 @@
 
 <!-- Custom script for Fluxio (infinite scroll etc.) -->
 <script src="{{ "js/custom.js" | absURL }}"></script>
+<script src="{{ "js/copycode.js" | absURL }}"></script>
 
 <!-- cookie -->
 {{ if site.Params.cookies.enable }}
