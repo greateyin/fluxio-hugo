@@ -12,6 +12,15 @@
   <meta name="theme-name" content="parsa-hugo" />
   {{ hugo.Generator }}
 
+  {{ "<!-- Canonical & Hreflang -->" | safeHTML }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{ if .IsTranslated }}
+  {{ range .Translations }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+  {{ end }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+  {{ end }}
+
   {{ "<!-- geo meta -->" | safeHTML }}
   {{ with site.Params.geo.region }}
   <meta name="geo.region" content="{{ . }}">{{ end }}
@@ -25,7 +34,9 @@
   {{ "<!-- Google Fonts -->" | safeHTML }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
 
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range site.Params.plugins.css }}
@@ -39,14 +50,14 @@
   {{ "<!-- Custom Stylesheet (Glassmorphism) -->" | safeHTML }}
   {{ $customCSS := resources.Get "css/custom.css" }}
   {{ if $customCSS }}
-    {{ if hugo.IsDevelopment }}
-      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
-    {{ else }}
-      {{ $customCSS = $customCSS | minify }}
-      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
-    {{ end }}
+  {{ if hugo.IsDevelopment }}
+  <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
+  {{ else }}
+  {{ $customCSS = $customCSS | minify }}
+  <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" media="screen">
   {{ end }}
-  
+  {{ end }}
+
   {{ "<!-- Additional Custom CSS from config -->" | safeHTML }}
   {{ range site.Params.custom_css }}
   <link rel="stylesheet" href="{{ . | absURL }}">
@@ -94,7 +105,7 @@
   <!-- Mermaid JS -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       mermaid.initialize({
         startOnLoad: true,
         theme: 'default',
@@ -115,7 +126,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -135,6 +146,7 @@
     crossorigin="anonymous"></script>
 
   <!-- Code Copy Button Script -->
-  <script src="{{ "js/code-copy.js" | absURL }}" defer></script>
+  <script src="{{ " js/code-copy.js" | absURL }}" defer></script>
 
+  {{ partial "seo/schema.html" . }}
 </head>

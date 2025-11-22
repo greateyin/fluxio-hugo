@@ -3,6 +3,7 @@ title = 'Fluxio'
 theme = 'parsa'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON", "SITEMAP", "ROBOTS"]
@@ -92,8 +93,8 @@ defaultContentLanguageInSubdir = true
   icon = "ti-github"
   link = "#"
 
-  # Geo SEO (update to your actual location)
+  # Geo SEO (Targeting US Tech Hub for higher AdSense CPM)
   [params.geo]
-    region = "TW-TPE"
-    placename = "Taipei"
-    position = "25.0330;121.5654"
+    region = "US-CA"
+    placename = "San Francisco"
+    position = "37.7749;-122.4194"

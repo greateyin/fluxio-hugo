@@ -1,0 +1,82 @@
+{{ "<!-- Schema.org JSON-LD -->" | safeHTML }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {{ if .IsHome }}
+    {
+      "@type": "WebSite",
+      "@id": "{{ .Site.BaseURL }}#website",
+      "url": "{{ .Site.BaseURL }}",
+      "name": "{{ .Site.Title }}",
+      "description": "{{ .Site.Params.description }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ .Site.Params.logo | absURL }}"
+        }
+      }
+    }
+    {{ else if .IsPage }}
+    {
+      "@type": "Article",
+      "@id": "{{ .Permalink }}#article",
+      "headline": "{{ .Title }}",
+      "description": "{{ .Description | default .Summary }}",
+      "image": [
+        {{ if .Params.image }}
+        "{{ .Params.image | absURL }}"
+        {{ else }}
+        "{{ .Site.Params.default_image | absURL }}"
+        {{ end }}
+      ],
+      "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ .Params.author | default .Site.Params.author }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ .Site.Params.logo | absURL }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ .Site.BaseURL }}"
+        }
+        {{ if .Parent }}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ .Parent.Title }}",
+          "item": "{{ .Parent.Permalink }}"
+        }
+        {{ end }}
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ .Title }}",
+          "item": "{{ .Permalink }}"
+        }
+      ]
+    }
+    {{ end }}
+  ]
+}
+</script>
