@@ -1,0 +1,21 @@
+{{- $asin := .Get "asin" -}}
+{{- if not $asin -}}
+  {{- errorf "The %q shortcode requires an 'asin' parameter. See %s" .Name .Position -}}
+{{- end -}}
+
+{{- $market := .Get "market" | default "amazon.com" -}}
+{{- $tag := or (.Get "tag") .Site.Params.amazonAffiliateTag -}}
+
+{{- $label := "" -}}
+{{- if .Inner -}}
+  {{- $label = .Inner | plainify -}}
+{{- else -}}
+  {{- $label = (.Get "label" | default "View on Amazon") -}}
+{{- end -}}
+
+{{- $url := printf "https://%s/dp/%s" $market $asin -}}
+{{- if $tag -}}
+  {{- $url = printf "%s?tag=%s" $url $tag -}}
+{{- end -}}
+
+<a class="amazon-affiliate-link" href="{{ $url | safeURL }}" target="_blank" rel="nofollow sponsored noopener noreferrer">{{ $label }}</a>

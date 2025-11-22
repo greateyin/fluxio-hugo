@@ -1,0 +1,18 @@
+{{- $id := .Get "id" -}}
+{{- if not $id -}}
+  {{- errorf "The %q shortcode requires an 'id' parameter. See %s" .Name .Position -}}
+{{- end -}}
+
+{{- $label := "" -}}
+{{- if .Inner -}}
+  {{- $label = .Inner | plainify -}}
+{{- else -}}
+  {{- $label = (.Get "label" | default "Buy me a coffee") -}}
+{{- end -}}
+
+{{- $url := printf "https://www.buymeacoffee.com/%s" $id -}}
+{{- with .Get "message" -}}
+  {{- $url = printf "%s?text=%s" $url (urlquery .) -}}
+{{- end -}}
+
+<a class="bmc-link" href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer">{{ $label }}</a>

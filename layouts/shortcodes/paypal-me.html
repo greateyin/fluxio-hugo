@@ -1,0 +1,21 @@
+{{- $user := .Get "user" -}}
+{{- if not $user -}}
+  {{- errorf "The %q shortcode requires a 'user' parameter. See %s" .Name .Position -}}
+{{- end -}}
+
+{{- $label := "" -}}
+{{- if .Inner -}}
+  {{- $label = .Inner | plainify -}}
+{{- else -}}
+  {{- $label = (.Get "label" | default "Pay with PayPal") -}}
+{{- end -}}
+
+{{- $url := printf "https://www.paypal.me/%s" $user -}}
+{{- with .Get "amount" -}}
+  {{- $url = printf "%s/%s" $url . -}}
+  {{- with $.Get "currency" -}}
+    {{- $url = printf "%s%s" $url . -}}
+  {{- end -}}
+{{- end -}}
+
+<a class="paypal-me-link" href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer">{{ $label }}</a>
