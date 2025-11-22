@@ -106,8 +106,16 @@
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid');
+      codeBlocks.forEach((block) => {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('mermaid');
+        wrapper.innerHTML = block.textContent;
+        block.parentElement.replaceWith(wrapper);
+      });
+
       mermaid.initialize({
-        startOnLoad: true,
+        startOnLoad: false,
         theme: 'default',
         themeVariables: {
           fontFamily: 'Inter, system-ui, sans-serif'
@@ -118,9 +126,12 @@
         },
         securityLevel: 'loose'
       });
+
+      mermaid.run({ querySelector: '.mermaid' });
     });
   </script>
 
+  {{ if site.Params.facebook_pixel_id }}
   <!-- Facebook Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
@@ -134,16 +145,19 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('init', '{{ site.Params.facebook_pixel_id }}');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+      src="https://www.facebook.com/tr?id={{ site.Params.facebook_pixel_id }}&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
+  {{ end }}
 
+  {{ with site.Params.adsense.client }}
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
     crossorigin="anonymous"></script>
+  {{ end }}
 
   <!-- Code Copy Button Script -->
   <script src="{{ " js/code-copy.js" | absURL }}" defer></script>

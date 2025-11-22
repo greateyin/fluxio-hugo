@@ -14,8 +14,15 @@
                     <div class="row align-items-center w-100">
                         <div class="col-lg-5">
                             <div class="hero-content">
+                                {{ $titleLen := len .Title }}
+                                {{ $titleSize := "clamp(1.6rem, 2vw + 0.9rem, 2rem)" }}
+                                {{ if gt $titleLen 80 }}
+                                  {{ $titleSize = "clamp(1.4rem, 1.6vw + 0.8rem, 1.8rem)" }}
+                                {{ else if gt $titleLen 60 }}
+                                  {{ $titleSize = "clamp(1.5rem, 1.8vw + 0.85rem, 1.9rem)" }}
+                                {{ end }}
                                 <h1 class="hero-title mb-3"
-                                    style="font-size: 2.8rem; font-weight: 800; line-height: 1.1; color: var(--text-primary);">
+                                    style="font-size: {{ $titleSize | safeCSS }}; font-weight: 800; line-height: 1.15; color: var(--text-primary);">
                                     {{ .Title }}
                                 </h1>
                                 <p class="hero-excerpt mb-4"

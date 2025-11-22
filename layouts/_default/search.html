@@ -23,7 +23,7 @@
             <div class="row no-gutters align-items-stretch">
               <div class="col-md-4 pr-md-3 mb-3 mb-md-0">
                 <div class="search-result-thumb w-100 h-100" style="border-radius: 12px; overflow: hidden; background: #f4f4f5;">
-                  <img src="${image}" alt="${title}" onerror="this.onerror=null;this.src='${placeholder}';" class="w-100 h-100" style="object-fit: cover; background: #f8fafc;">
+                  <img src="${image}" alt="${title}" onerror="this.onerror=null;this.src='{{ site.Params.default_image | absURL }}';" class="w-100 h-100" style="object-fit: cover; background: #f8fafc;">
                 </div>
               </div>
               <div class="col-md-8 d-flex flex-column">
