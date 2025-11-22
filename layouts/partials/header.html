@@ -10,8 +10,9 @@
                 {{ end }}
             </a>
 
-            <button class="navbar-toggler glass-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
-                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler glass-toggler border-0" type="button" data-toggle="collapse"
+                data-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -29,9 +30,9 @@
                 <div class="d-flex align-items-center header-actions">
                     <!-- Language Switcher -->
                     <div class="dropdown lang-dropdown">
-                        <button class="btn glass-btn dropdown-toggle" type="button" id="langDropdown" 
+                        <button class="btn glass-btn dropdown-toggle" type="button" id="langDropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ .Site.Language.LanguageName }} 
+                            {{ .Site.Language.LanguageName }}
                         </button>
                         <div class="dropdown-menu glass-dropdown" aria-labelledby="langDropdown">
                             {{ range .Site.Languages }}
@@ -42,13 +43,18 @@
                         </div>
                     </div>
 
+                    <!-- Subscribe Button -->
+                    <a href="#subscribe" class="btn btn-sm btn-primary ml-3 d-none d-lg-inline-block"
+                        style="border-radius: 100px; padding: 8px 20px; font-weight: 600; font-size: 0.85rem; background: var(--accent-color); border: none; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);">
+                        Subscribe
+                    </a>
+
                     <!-- Search -->
                     {{ if site.Params.search }}
-                    <form class="header-search" action="{{ "search" | relLangURL }}">
+                    <form class="header-search" action="{{ " search" | relLangURL }}">
                         <div class="search-wrapper">
-                            <input class="search-box glass-input" type="search" 
-                                placeholder="Article name, tag, category..."
-                                id="search-query" name="s">
+                            <input class="search-box glass-input" type="search"
+                                placeholder="Article name, tag, category..." id="search-query" name="s">
                             <button class="search-icon" type="submit">
                                 <i class="ti-search"></i>
                             </button>

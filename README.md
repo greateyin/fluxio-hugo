@@ -322,7 +322,7 @@ hugo server -D -F
   - 參數：`id`（必填）、`message`（選填，會帶入 ?text=）、`label` 或內文自訂按鈕文字。
 
 - **PayPal.Me**：
-  - 用法：`{{</* paypal-me user="yourname" amount="10" currency="USD" */>}}` 或 `{{</* paypal-me user="yourname" */>}}Support via PayPal{{</* /paypal-me */>}}`
+  - 用法：`{{</* paypal-me user="yourname" amount="10" currency="USD" label="Support via PayPal" */>}}`；若想用內文做按鈕文字，則使用開合式：`{{</* paypal-me user="yourname" */>}}Support via PayPal{{</* /paypal-me */>}}`
   - 參數：`user`（必填）、`amount` / `currency`（選填，會組成 `https://paypal.me/user/10USD`）、`label` 或內文自訂按鈕文字。
 
 範例區塊：
@@ -331,7 +331,7 @@ hugo server -D -F
 支援我：
 - Amazon 推薦：{{</* amazon-affiliate asin="B08N5WRWNW" */>}}看詳細{{</* /amazon-affiliate */>}}
 - Buy Me a Coffee：{{</* buy-me-a-coffee id="yourname" message="Appreciate it!" */>}}請我喝咖啡{{</* /buy-me-a-coffee */>}}
-- PayPal.Me：{{</* paypal-me user="yourname" amount="5" currency="USD" */>}}小額贊助{{</* /paypal-me */>}}
+- PayPal.Me：{{</* paypal-me user="yourname" amount="5" currency="USD" label="小額贊助" */>}}
 ```
 
 ---

@@ -1184,3 +1184,94 @@ button {
 .blog-content-wrapper blockquote {
   font-family: var(--font-body);
 }
+
+/* ========================================
+   REDESIGN UPDATES
+   ======================================== */
+
+/* Hero Section */
+.hero-card {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+}
+
+.hero-image-wrapper img {
+  transition: transform 0.5s ease;
+}
+
+.hero-card:hover .hero-image-wrapper img {
+  transform: scale(1.03);
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.trending-item:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.trending-item:hover .trending-icon {
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+.trending-item a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Featured Stories Grid */
+.featured-story-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.featured-story-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.featured-story-card img {
+  transition: transform 0.5s ease;
+}
+
+.featured-story-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Latest Articles List */
+.article-list-item:hover {
+  transform: translateX(5px);
+  background: white;
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.article-list-item img {
+  transition: transform 0.3s ease;
+}
+
+.article-list-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Topics */
+.topic-tag:hover {
+  background: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* Object Fit Utilities */
+.object-fit-cover {
+  object-fit: cover;
+}

@@ -40,6 +40,10 @@ defaultContentLanguageInSubdir = true
   style = 'github'
   tabWidth = 4
 
+[services]
+  [services.youtube]
+    privacyEnhanced = true
+
 [sitemap]
   changefreq = "daily"
   priority = 0.7
